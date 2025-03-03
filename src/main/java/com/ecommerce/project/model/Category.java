@@ -22,11 +22,4 @@ public class Category {
     private String categoryName;
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     private List<Product> products;
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", categoryName='" + categoryName + '\'' +
-                '}';
-    }
 }
