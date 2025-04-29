@@ -143,10 +143,8 @@ public class CartService {
 
         Cart cart = cartRepo.findById(cartId)
                 .orElseThrow(() -> new ResourceNotFoundException("Cart", "cartId", Math.toIntExact(cartId)));
-
         Product product = productRepo.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("Product", "productId", Math.toIntExact(productId)));
-
         if (product.getQuantity() == 0) {
             throw new APIExceptions(product.getProductName() + " is not available");
         }
@@ -184,12 +182,8 @@ public class CartService {
         if(updatedItem.getQuantity() == 0){
             cartItemRepo.deleteById(updatedItem.getCartItemId());
         }
-
-
         CartDTO cartDTO = modelMapper.map(cart, CartDTO.class);
-
         List<CartItem> cartItems = cart.getCartItem();
-
         Stream<ProductDTO> productStream = cartItems.stream().map(item -> {
             ProductDTO prd = modelMapper.map(item.getProduct(), ProductDTO.class);
             prd.setQuantity(item.getQuantity());
