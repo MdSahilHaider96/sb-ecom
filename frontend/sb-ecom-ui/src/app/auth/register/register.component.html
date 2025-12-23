@@ -1,0 +1,21 @@
+<div class="container col-md-4 mt-5">
+  <h3 class="text-center">Register</h3>
+
+  <input class="form-control mb-2"
+         placeholder="Name"
+         [(ngModel)]="registerData.name">
+
+  <input class="form-control mb-2"
+         type="email"
+         placeholder="Email"
+         [(ngModel)]="registerData.email">
+
+  <input class="form-control mb-3"
+         type="password"
+         placeholder="Password"
+         [(ngModel)]="registerData.password">
+
+  <button class="btn btn-success w-100" (click)="onRegister()">
+    Register
+  </button>
+</div>
