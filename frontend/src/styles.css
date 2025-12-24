@@ -1,1 +1,100 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Page wrapper - center card */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f0f4f7, #d9e2ec);
+}
+
+/* Card */
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  padding: 30px 25px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Header */
+.auth-header {
+  margin-bottom: 25px;
+}
+
+.auth-header h1 {
+  color: #11998e;
+  margin-bottom: 10px;
+}
+
+.auth-subtitle {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Form */
+.auth-form .form-group {
+  margin-bottom: 20px;
+}
+
+.auth-form .form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.auth-form .form-group input:focus {
+  border-color: #38ef7d;
+  outline: none;
+  box-shadow: 0 0 8px rgba(56,239,125,0.3);
+}
+
+/* Buttons */
+.btn-gradient {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(90deg, #11998e, #38ef7d);
+  color: white;
+  transition: 0.3s;
+}
+
+.btn-gradient:hover {
+  opacity: 0.9;
+}
+
+/* Footer */
+.auth-footer {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.auth-footer a {
+  color: #38ef7d;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .auth-card {
+    margin: 40px 20px;
+  }
+}

@@ -1,11 +1,28 @@
-<h2>Register</h2>
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-header" style="background: linear-gradient(to right, #11998e, #38ef7d);">
+      <h1>SB-Ecom</h1>
+      <p class="auth-subtitle">Join Our Community!</p>
+    </div>
 
-<form (ngSubmit)="register()">
-  <input type="text" placeholder="Name" [(ngModel)]="user.name" name="name" required /><br><br>
+    <form (ngSubmit)="register()" class="auth-form">
+      <div class="form-group">
+        <input type="text" placeholder="Full Name" name="name" [(ngModel)]="user.name" required>
+      </div>
 
-  <input type="email" placeholder="Email" [(ngModel)]="user.email" name="email" required /><br><br>
+      <div class="form-group">
+        <input type="email" placeholder="Email" name="email" [(ngModel)]="user.email" required>
+      </div>
 
-  <input type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required /><br><br>
+      <div class="form-group">
+        <input type="password" placeholder="Password" name="password" [(ngModel)]="user.password" required>
+      </div>
 
-  <button type="submit">Register</button>
-</form>
+      <button type="submit" class="btn-gradient">Sign Up</button>
+    </form>
+
+    <div class="auth-footer">
+      Already have an account? <a routerLink="/login">Login</a>
+    </div>
+  </div>
+</div>
