@@ -10,22 +10,27 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-  // Matches your HTML [(ngModel)]
+  // MUST match [(ngModel)]="loginData.username"
   loginData = {
-    email: '',
+    username: '', 
     password: ''
   };
 
   constructor(private http: HttpClient) {}
 
   login() {
-    this.http.post('http://localhost:8080/api/auth/login', this.loginData)
-      .subscribe({
-        next: (res) => {
-          console.log('Login Success', res);
-          alert('✅ Login Successful');
-        },
-        error: () => alert('❌ Invalid Credentials')
-      });
+    this.http.post('http://localhost:8080/api/auth/signin', this.loginData, { 
+      withCredentials: true 
+    })
+    .subscribe({
+      next: (res) => {
+        console.log('Login Success', res);
+        alert('✅ Login Successful');
+      },
+      error: (err) => {
+        console.error('Login Error:', err);
+        alert('❌ Login Failed');
+      }
+    });
   }
 }

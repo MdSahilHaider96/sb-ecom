@@ -10,7 +10,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   templateUrl: './register.component.html'
 })
 export class RegisterComponent {
-  // Matches [(ngModel)]="user.name" in your HTML
+  // These fields must match the [(ngModel)] names in your register.component.html
   user = {
     name: '',
     email: '',
@@ -20,10 +20,27 @@ export class RegisterComponent {
   constructor(private http: HttpClient) {}
 
   register() {
-    this.http.post('http://localhost:8080/api/auth/register', this.user)
+    // 1. Create a payload that matches your Java SignupRequest class exactly
+    // Your backend expects 'username', not 'name'
+    const signupPayload = {
+      username: this.user.name, 
+      email: this.user.email,
+      password: this.user.password
+    };
+
+    // 2. Use the /signup endpoint as defined in your AuthController @PostMapping
+  this.http.post('http://localhost:8080/api/auth/signup', signupPayload)
       .subscribe({
-        next: (res) => alert('✅ Registration Successful'),
-        error: (err) => alert('❌ Registration Failed')
+        next: (res) => {
+          console.log('Registration Success:', res);
+          alert('✅ Registration Successful!');
+        },
+        error: (err) => {
+          console.error('Registration Error:', err);
+          // Shows the specific error message from your MessageResponse if available
+          const errorMsg = err.error?.message || 'Check if Backend is running';
+          alert('❌ Registration Failed: ' + errorMsg);
+        }
       });
   }
 }
